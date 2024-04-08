@@ -1419,6 +1419,10 @@ body {
     .icons-social {
         font-size: 17px !important;
     }
+
+    .icons-social a {
+        height: 45px;
+    }
 }
 
 @media only screen and (max-width: 770px) {
@@ -1429,12 +1433,21 @@ body {
     .mobile-menu {
         z-index: 9999999999999999999999999;
         display: flex !important;
+        top: 42px;
+        left: 90px;
     }
 }
 
 @media only screen and (max-width: 600px) {
     main {
         overflow: auto !important;
+    }
+
+    .mobile-menu {
+        z-index: 9999999999999999999999999;
+        display: flex !important;
+        top: 14px !important;
+        left: 30px !important;
     }
 
     .presale-responsive {
