@@ -60,25 +60,25 @@ const mobileWalletStyle = {
     color: "black",
     justifyContent: "start",
     fontSize: '14px',
-    fontWeight:'bold'
+    fontWeight: 'bold'
 }
 
 export default function Ui() {
     const [state, { dispatch }] = useWebContext();
 
-      const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
-        const menuVariants = {
-            open: { opacity: 1, y: 0 },
-            closed: { opacity: 0, y: '100%' },
-        }
+    const menuVariants = {
+        open: { opacity: 1, y: '100%' },
+        closed: { opacity: 0, y: 0 },
+    }
 
-        const handleClickMenu = () => {
-            setIsOpen(!isOpen)
-        }
-        const handleCloseMenu = () => {
-            setIsOpen(false) // Close the menu
-        }
+    const handleClickMenu = () => {
+        setIsOpen(!isOpen)
+    }
+    const handleCloseMenu = () => {
+        setIsOpen(false) // Close the menu
+    }
 
 
     // ------------------
@@ -307,23 +307,19 @@ export default function Ui() {
             <Toaster />
 
             <div className="square-deco-container contain">
-                <div className="noise"></div>
+                {/* <div className="noise"></div> */}
                 <div className="square-deco-content">
                     <div className="art">
                         <div>
                             <div className="icons-social">
-                                <a href="">
-                                    <img src="/assets/discord.png" className="iconsx" />
-                                </a>
-                                <a href="https://x.com/metarunes21">
-                                    <img src="/assets/twitter.png" className="iconsx" />
-                                </a>
-                                <a href="https://doc.metarunes.io">
-                                    <img src="/assets/doc.png" className="iconsx" />
-                                </a>
+                                <Link href="/" className="hover-menu" data-hover="HOME">HOME</Link>
+                                <Link href="/inscribe" className="hover-menu" data-hover="INSCRIBE">INSCRIBE</Link>
+                                <Link href="/launchpad" className="hover-menu" data-hover="LAUNCHPAD">LAUNCHPAD</Link>
+                                <Link href="/faqs" className="hover-menu" data-hover="FAQ">FAQ</Link>
+                                <Link href="/airdrop" className="hover-menu" data-hover="AIRDROP">AIRDROP</Link>
                             </div>
 
-                            <div className="logo">
+                            {/* <div className="logo">
                                 <Link href="/" >
                                     <Image
                                         src="/assets/metaicon.png"
@@ -334,7 +330,7 @@ export default function Ui() {
                                         priority
                                     />
                                 </Link>
-                            </div>
+                            </div> */}
                             {!connected ? (
                                 <Button
                                     id="basic-button"
@@ -364,7 +360,7 @@ export default function Ui() {
                             <Menu
                                 id="basic-menu"
                                 sx={{
-                                    zIndex:99999999,
+                                    zIndex: 99999999,
                                 }}
                                 anchorEl={anchorEl}
                                 open={open}
@@ -384,9 +380,9 @@ export default function Ui() {
                                         border: "solid 1px black",
                                         background: "#ede5e4",
                                         "& ul": {
-                                            padding:'0px !important',
+                                            padding: '0px !important',
                                             backgroundColor: "#ede5e4",
-                                            borderRadius:'11px'
+                                            borderRadius: '11px'
                                         },
                                         "& .MuiAvatar-root": {
                                             width: 65,
@@ -398,7 +394,7 @@ export default function Ui() {
                                             content: '""',
                                             display: "block",
                                             position: "absolute",
-                                            border:'solid 1px black',
+                                            border: 'solid 1px black',
                                             top: 0,
                                             right: 14,
                                             backgroundColor: "#ede5e4",
@@ -412,7 +408,7 @@ export default function Ui() {
                                 transformOrigin={{ horizontal: "right", vertical: "top" }}
                                 anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                             >
-                                <MenuItem onClick={handleClose} sx={{ fontSize: "15px",fontWeight:'bold' }}>
+                                <MenuItem onClick={handleClose} sx={{ fontSize: "15px", fontWeight: 'bold' }}>
                                     {address ? (
                                         address.slice(0, 6) +
                                         "..." +
@@ -421,51 +417,40 @@ export default function Ui() {
                                         <></>
                                     )}
                                 </MenuItem>
-                                <MenuItem onClick={DisconnectWallet} sx={{ fontSize: "15px",fontWeight:'bold' }}>
+                                <MenuItem onClick={DisconnectWallet} sx={{ fontSize: "15px", fontWeight: 'bold' }}>
                                     Disconnect
                                 </MenuItem>
                             </Menu>
                         </div>
 
 
-                        <Image
+                        {/* <Image
                             src="/assets/floating.webp"
                             alt="floating island"
                             className="float"
                             layout="fill"
                             objectFit="contain"
                             priority
-                        />
-                        <Image
+                        /> */}
+                        {/* <Image
                             src="/assets/spiral.webp"
                             alt="spiral"
                             className="spiral"
                             layout="fill"
                             objectFit="contain"
-                        />
-                        <Image
+                        /> */}
+                        {/* <Image
                             src="/assets/rune.webp"
                             alt="rune"
                             className="rune"
                             layout="fill"
                             objectFit="contain"
-                        />
+                        /> */}
 
-                        <div className="footer">
-                            <div className="inner-footer">
-                                <div><Link href="/" className="hover-menu" data-hover="HOME">HOME</Link></div>
-                                <div><Link href="/presale" className="hover-menu" data-hover="PRESALE">PRESALE</Link></div>
-                                <div><Link href="/inscribe" className="hover-menu" data-hover="INSCRIBE">INSCRIBE</Link></div>
-                                <div> <Link href="/launchpad" className="hover-menu" data-hover="LAUNCHPAD">LAUNCHPAD</Link></div>
-                                <div> <Link href="/faqs" className="hover-menu" data-hover="FAQ">FAQ</Link></div>
-                                <div> <Link href="/airdrop" className="hover-menu" data-hover="AIRDROP">AIRDROP</Link></div>
-                                <div><Link href="/rune-characters" className="hover-menu" data-hover="???">???</Link></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
-                <div className="square-deco-inner">
+                {/* <div className="square-deco-inner">
 
 
                     <Image
@@ -513,14 +498,14 @@ export default function Ui() {
                         layout="fill"
                         objectFit="contain"
                     />
-                </div>
+                </div> */}
 
-                <div className="square-deco-square-left-top"></div>
+                {/* <div className="square-deco-square-left-top"></div>
                 <div className="square-deco-square-left-bottom"></div>
                 <div className="square-deco-square-right-top"></div>
                 <div className="square-deco-square-right-bottom"></div>
                 <div className="square-deco-tall"></div>
-                <div className="square-deco-wide"></div>
+                <div className="square-deco-wide"></div> */}
             </div>
 
             <div className="mobile-menu">
@@ -546,9 +531,6 @@ export default function Ui() {
                                     <Link href="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link href="/presale">Presale</Link>
-                                </li>
-                                <li>
                                     <Link href="/inscribe">Inscribe</Link>
                                 </li>
                                 <li>
@@ -569,6 +551,7 @@ export default function Ui() {
                 </AnimatePresence>
             </div>
 
+            {/* // Wallet Modal */}
             <Modal
                 open={openModal}
                 className="modal-index"
