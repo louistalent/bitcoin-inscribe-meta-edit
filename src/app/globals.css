@@ -37,12 +37,12 @@ body {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 main {
@@ -340,9 +340,9 @@ main {
     border-radius: 51px;
     height: 70px;
     font-size: 27px;
-    width: 273px;
+    /* width: 273px; */
     position: absolute;
-    left: 198px;
+    left: 80px;
     top: 26px;
     color: #e75648;
     z-index: 999;
@@ -561,7 +561,7 @@ main {
     margin: 2%;
     border-radius: 6px;
     background: #d9d7d73b;
-    
+
     backdrop-filter: blur(15px);
     display: flex;
     align-content: center;
@@ -1415,15 +1415,26 @@ body {
 
 
 /*---------------------------------------- MOBILES ----------------------------------------*/
+@media only screen and (max-width: 950px) {
+    .icons-social {
+        font-size: 17px !important;
+    }
+}
 
-@media only screen and (max-width: 600px) {
-    main {
-        overflow: auto !important;
+@media only screen and (max-width: 770px) {
+    .icons-social {
+        display: none !important;
     }
 
     .mobile-menu {
         z-index: 9999999999999999999999999;
         display: flex !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+        overflow: auto !important;
     }
 
     .presale-responsive {
@@ -1619,16 +1630,6 @@ body {
         width: 136px !important;
         height: 47px !important;
         right: 40px !important;
-        top: 12px !important;
-    }
-
-    .icons-social {
-        display: none !important;
-        padding: 7px !important;
-        height: 47px !important;
-        font-size: 27px !important;
-        width: 150px !important;
-        left: 40px !important;
         top: 12px !important;
     }
 
@@ -1956,7 +1957,7 @@ body {
 
 
 @media only screen and (max-width: 320px) {
- 
+
 
     .icons-social {
         display: none !important;
@@ -2040,15 +2041,11 @@ body {
     }
 
     .icons-social {
-        display: none !important;
         padding: 6px;
         height: 55px;
         font-size: 27px;
-        width: 161px;
         left: 92px;
         top: 36px;
-        display: none;
-
     }
 
     /* .logo{
