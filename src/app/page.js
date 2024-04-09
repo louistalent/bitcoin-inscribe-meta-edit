@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main>
       <div className="hero">
-        {/* <h2>ᛃᛟᚱ ᚠᛟᚲᚢᛊ ᛞᛁᛏᛖᚱᛗᛁᚾᛊ ᛃᛟᚱ ᚱᛁᚨᛚᛁᛏᛁ</h2> */}
+        <h2>ᛃᛟᚱ ᚠᛟᚲᚢᛊ ᛞᛁᛏᛖᚱᛗᛁᚾᛊ ᛃᛟᚱ ᚱᛁᚨᛚᛁᛏᛁ</h2>
       </div>
     </main>
   );

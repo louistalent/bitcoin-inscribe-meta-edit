@@ -2,6 +2,9 @@
 import react, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from 'next/link';
+import { useRouter, withRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
+
 import { Box } from "@mui/system";
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -26,6 +29,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LoadingButton from "@mui/lab/LoadingButton";
 import toast, { Toaster } from "react-hot-toast";
 import { useWebContext } from "../context";
+
 
 const style = {
     position: "absolute",
@@ -64,10 +68,12 @@ const mobileWalletStyle = {
 }
 
 export default function Ui() {
+    // const router = useRouter()
+    const pathname = usePathname();
+
     const [state, { dispatch }] = useWebContext();
-
     const [isOpen, setIsOpen] = useState(false)
-
+    const [isHome, setIsHome] = useState(false)
     const menuVariants = {
         open: { opacity: 1, y: '100%' },
         closed: { opacity: 0, y: 0 },
@@ -301,22 +307,28 @@ export default function Ui() {
         handleClose();
     };
 
+    useEffect(() => {
+        console.log(pathname);
+    }, [pathname]);
 
     return (
-        <div className="main">
+        <div className={`${pathname == '/' ? 'main home' : 'main'}`}>
             <Toaster />
 
             <div className="square-deco-container contain">
-                {/* <div className="noise"></div> */}
+                {
+                    pathname == '/' &&
+                    <div className="noise"></div>
+                }
                 <div className="square-deco-content">
                     <div className="art">
-                        <div>
+                        <div className={`header`} >
                             <div className="icons-social">
-                                <Link href="/" className="hover-menu" data-hover="HOME">HOME</Link>
-                                <Link href="/inscribe" className="hover-menu" data-hover="INSCRIBE">INSCRIBE</Link>
-                                <Link href="/launchpad" className="hover-menu" data-hover="LAUNCHPAD">LAUNCHPAD</Link>
-                                <Link href="/faqs" className="hover-menu" data-hover="FAQ">FAQ</Link>
-                                <Link href="/airdrop" className="hover-menu" data-hover="AIRDROP">AIRDROP</Link>
+                                <Link href="/" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}` }} data-hover="HOME">HOME</Link>
+                                <Link href="/inscribe" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="INSCRIBE">INSCRIBE</Link>
+                                <Link href="/launchpad" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="LAUNCHPAD">LAUNCHPAD</Link>
+                                <Link href="/faqs" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="FAQ">FAQ</Link>
+                                <Link href="/airdrop" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="AIRDROP">AIRDROP</Link>
                             </div>
 
                             {/* <div className="logo">
@@ -351,9 +363,10 @@ export default function Ui() {
                                     className="connect"
                                     variant="contained"
                                 >
-                                    {address.slice(0, 6) +
-                                        "..." +
-                                        address.slice(address.length - 4, address.length)}
+                                    {
+                                        address &&
+                                        address.slice(0, 6) + "..." + address.slice(address.length - 4, address.length)
+                                    }
                                 </Button>
                             )}
 
@@ -422,90 +435,114 @@ export default function Ui() {
                                 </MenuItem>
                             </Menu>
                         </div>
+                        {
+                            pathname == '/' &&
+                            <>
+                                <Image
+                                    src="/assets/floating.webp"
+                                    alt="floating island"
+                                    className="float"
+                                    layout="fill"
+                                    objectFit="contain"
+                                    priority
+                                />
+                                <Image
+                                    src="/assets/spiral.webp"
+                                    alt="spiral"
+                                    className="spiral"
+                                    layout="fill"
+                                    objectFit="contain"
+                                />
+                                <Image
+                                    src="/assets/rune.webp"
+                                    alt="rune"
+                                    className="rune"
+                                    layout="fill"
+                                    objectFit="contain"
+                                />
+                            </>
+                        }
 
+                        <div className="footer">
+                            <div className="inner-footer">
+                                <a href="">
+                                    <img width={60} src="/assets/discord.png" className="iconsx" />
+                                </a>
+                                <a href="https://x.com/metarunes21">
+                                    <img width={60} src="/assets/twitter.png" className="iconsx" />
+                                </a>
+                                <a href="https://doc.metarunes.io">
+                                    <img width={60} src="/assets/doc.png" className="iconsx" />
+                                </a>
 
-                        {/* <Image
-                            src="/assets/floating.webp"
-                            alt="floating island"
-                            className="float"
-                            layout="fill"
-                            objectFit="contain"
-                            priority
-                        /> */}
-                        {/* <Image
-                            src="/assets/spiral.webp"
-                            alt="spiral"
-                            className="spiral"
-                            layout="fill"
-                            objectFit="contain"
-                        /> */}
-                        {/* <Image
-                            src="/assets/rune.webp"
-                            alt="rune"
-                            className="rune"
-                            layout="fill"
-                            objectFit="contain"
-                        /> */}
+                                {/* <div><Link href="/" className="hover-menu" data-hover="HOME">HOME</Link></div>
+                                <div> <Link href="/airdrop" className="hover-menu" data-hover="AIRDROP">AIRDROP</Link></div>
+                                <div><Link href="/rune-characters" className="hover-menu" data-hover="???">???</Link></div> */}
+                            </div>
+                        </div>
 
                     </div>
                 </div>
-
-                {/* <div className="square-deco-inner">
-
-
-                    <Image
-                        src="/assets/clouds/cloud1.webp"
-                        alt="clouds one"
-                        className="cloud1"
-                        layout="fill"
-                        objectFit="contain"
-                        priority
-                    />
-                    <Image
-                        src="/assets/clouds/cloud2.webp"
-                        alt="clouds two"
-                        className="cloud2"
-                        layout="fill"
-                        objectFit="contain"
-                    />
-                    <Image
-                        src="/assets/clouds/cloud3.webp"
-                        alt="clouds tree"
-                        className="cloud3"
-                        layout="fill"
-                        objectFit="contain"
-                    />
-                    <Image
-                        src="/assets/clouds/cloud4.webp"
-                        alt="clouds four"
-                        className="cloud4"
-                        layout="fill"
-                        objectFit="contain"
-                    />
-                    <Image
-                        src="/assets/clouds/cloud4.webp"
-                        alt="clouds five"
-                        className="cloud5"
-                        layout="fill"
-                        objectFit="contain"
-                    />
+                {
+                    pathname == '/' &&
+                    <>
+                        <div className="square-deco-inner">
 
 
-                    <Image
-                        src="/assets/star.webp"
-                        alt="star"
-                        className="star"
-                        layout="fill"
-                        objectFit="contain"
-                    />
-                </div> */}
+                            <Image
+                                src="/assets/clouds/cloud1.webp"
+                                alt="clouds one"
+                                className="cloud1"
+                                layout="fill"
+                                objectFit="contain"
+                                priority
+                            />
+                            <Image
+                                src="/assets/clouds/cloud2.webp"
+                                alt="clouds two"
+                                className="cloud2"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                            <Image
+                                src="/assets/clouds/cloud3.webp"
+                                alt="clouds tree"
+                                className="cloud3"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                            <Image
+                                src="/assets/clouds/cloud4.webp"
+                                alt="clouds four"
+                                className="cloud4"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                            <Image
+                                src="/assets/clouds/cloud4.webp"
+                                alt="clouds five"
+                                className="cloud5"
+                                layout="fill"
+                                objectFit="contain"
+                            />
 
-                {/* <div className="square-deco-square-left-top"></div>
-                <div className="square-deco-square-left-bottom"></div>
-                <div className="square-deco-square-right-top"></div>
-                <div className="square-deco-square-right-bottom"></div>
-                <div className="square-deco-tall"></div>
-                <div className="square-deco-wide"></div> */}
+
+                            <Image
+                                src="/assets/star.webp"
+                                alt="star"
+                                className="star"
+                                layout="fill"
+                                objectFit="contain"
+                            />
+                        </div>
+                        <div className="square-deco-square-left-top"></div>
+                        <div className="square-deco-square-left-bottom"></div>
+                        <div className="square-deco-square-right-top"></div>
+                        <div className="square-deco-square-right-bottom"></div>
+                        <div className="square-deco-tall"></div>
+                        <div className="square-deco-wide"></div>
+                    </>
+                }
             </div>
 
             <div className="mobile-menu">
