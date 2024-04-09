@@ -324,11 +324,11 @@ export default function Ui() {
                     <div className="art">
                         <div className={`header`} >
                             <div className="icons-social">
-                                <Link href="/" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}` }} data-hover="HOME">HOME</Link>
-                                <Link href="/inscribe" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="INSCRIBE">INSCRIBE</Link>
-                                <Link href="/launchpad" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="LAUNCHPAD">LAUNCHPAD</Link>
-                                <Link href="/faqs" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="FAQ">FAQ</Link>
-                                <Link href="/airdrop" className="hover-bottom" style={{ color: `${pathname == '/' ? 'white' : ''}`}} data-hover="AIRDROP">AIRDROP</Link>
+                                <Link href="/" className="hover-bottom" data-hover="HOME">HOME</Link>
+                                <Link href="/inscribe" className="hover-bottom" data-hover="INSCRIBE">INSCRIBE</Link>
+                                <Link href="/launchpad" className="hover-bottom" data-hover="LAUNCHPAD">LAUNCHPAD</Link>
+                                <Link href="/faqs" className="hover-bottom" data-hover="FAQ">FAQ</Link>
+                                <Link href="/airdrop" className="hover-bottom" data-hover="AIRDROP">AIRDROP</Link>
                             </div>
 
                             {/* <div className="logo">
